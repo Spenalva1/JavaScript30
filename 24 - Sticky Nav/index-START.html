@@ -174,20 +174,30 @@
   <script>
     const nav = document.querySelector('nav');
     const header = document.querySelector('header');
+    const imgs = document.querySelectorAll('.slide-in');
 
-
-    function handleScroll() {
-      console.log(window.scrollY, nav.offsetTop, header.offsetHeight);
-      console.log(window.scrollY < header.offsetHeight);
-
-
-
+    function toggleFixedNav() {
       if (window.scrollY > nav.offsetTop) document.body.classList.add('fixed-nav');
       if (window.scrollY < header.offsetHeight) document.body.classList.remove('fixed-nav');
     }
 
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener()
+    function slideImgs() {
+      imgs.forEach(img => {
+        showImgAt = window.scrollY + window.innerHeight - img.offsetHeight / 2;
+        imgBottom = img.offsetTop + img.offsetParent.offsetTop + img.offsetHeight;
+        isHalfImgShown = showImgAt > img.offsetTop + img.offsetParent.offsetTop;
+        isNotScrolled = window.scrollY < imgBottom;
+        (isHalfImgShown && isNotScrolled) ? img.classList.add('active') : img.classList.remove('active');
+
+      });
+    }
+
+    function handleScroll() {
+      toggleFixedNav();
+      slideImgs();
+    }
+
+    window.addEventListener('scroll', handleScroll);
   </script>
 
 </body>
