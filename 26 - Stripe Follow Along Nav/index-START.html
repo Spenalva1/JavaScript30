@@ -86,7 +86,7 @@
 
     function handleEnter() {
       this.classList.add('trigger-enter');
-      setTimeout(() => this.classList.add('trigger-enter-active'), 200)
+      setTimeout(() => { if (this.classList.contains('trigger-enter')) this.classList.add('trigger-enter-active') }, 200)
       const { offsetWidth: width, offsetHeight: height } = this.querySelector('.dropdown');
 
       //resize background
