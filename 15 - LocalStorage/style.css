@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background: beige;
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -11,7 +11,7 @@ html {
 }
 
 *, *:before, *:after {
-  box-sizing: inherit; 
+  box-sizing: inherit;
 }
 
 svg {
@@ -25,7 +25,7 @@ svg {
 
 .wrapper {
   padding: 20px;
-  max-width: 350px;
+  max-width: 400px;
   background: rgba(255,255,255,0.95);
   box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
 }
@@ -70,9 +70,31 @@ h2 {
 
 .add-items {
   margin-top: 20px;
+  display: grid;
+  align-items: center;
+  grid-template-areas: "input input submit" "all unall deall";
+  grid-gap: 5px;
 }
 
-.add-items input {
+input[name="item"]{
+  grid-area: input;
+}
+
+input[type="submit"]{
+  grid-area: submit;
+}
+
+.selectAll{
+  grid-area: all;
+}
+.unSelectAll{
+  grid-area: unall;
+}
+.deleteAll{
+  grid-area: deall;
+}
+
+.add-items input, .add-items button {
   padding: 10px;
   outline: 0;
   border: 1px solid rgba(0,0,0,0.1);
